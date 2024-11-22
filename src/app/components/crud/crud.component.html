@@ -1,0 +1,96 @@
+<nav class="bg-neutral-950 h-20 w-full fixed shadow-md shadow-rose-800">
+  <label class="text-white leading-[80px] md:leading-[80px] pl-12 md:pl-24 md:text-4xl text-3xl">
+    <a>Home</a>
+  </label>
+  <ul class="float-right mr-10 flex leading-[80px] space-x-4 text-white uppercase rounded">
+    <li class="px-4" (click)="logout()"><a routerLink="">Logout</a></li>
+  </ul>
+</nav>
+<br><br><br><br><br>
+
+
+
+<div class="grid grid-cols-4 gap-2">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg col-span-3 bg-gray-800">
+  <div class="w-full max-w-md mb-4">
+    <label class="block text-white text-sm font-bold mb-2" for="search">
+      Search Product
+    </label>
+    <input type="text" id="search" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search by Product Name..." class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  pid
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Product Name
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Price
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  <span class="sr-only">Edit/Delete</span>
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+       <!--@for (item of pList; track $index){-->
+          <tr *ngFor="let item of filteredUserList; trackBy: trackByIndex" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ item.id }}
+              </th>
+              <td class="px-6 py-4">
+                {{ item.pname }}
+              </td>
+              <td class="px-6 py-4">
+                {{ item.price }}
+              </td>
+
+              <td class="px-6 py-4 text-right">
+                <button  class="bg-yellow-800 hover:bg-yellow-400 text-white font-bold py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded" (click)="onEdit(item)" >
+                  Edit
+                </button>
+                <button  class="bg-rose-800 hover:bg-rose-400 text-white font-bold py-2 px-4 border-b-4 border-rose-700 hover:border-rose-500 rounded" (click)="onDelete(item.id)" >
+                  Delete
+                </button>
+
+              </td>
+          </tr>
+        <!--}-->
+      </tbody>
+  </table>
+</div>
+
+<div class="w-full max-w-md  ">
+  <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="onReset(productForm)">Reset</button>
+  <form class="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4" novalidate #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <h6 class="text-rose-600 text-2xl">{{ editMode ?'Edit Product':'Add Product'}}</h6>
+
+    <div class="mb-4">
+      <hr>
+      <label class="block text-white text-sm font-bold mb-2" for="panme">
+        Product Name
+      </label>
+      <input type="text" name="pname" [(ngModel)]="product.pname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pname" placeholder="Input Product Name" required>
+    </div>
+    <div class="mb-6">
+      <label class="block text-white text-sm font-bold mb-2" for="price">
+        Price
+      </label>
+      <input type="text" name="price" [(ngModel)]="product.price"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="price" placeholder="Input Product Price" required>
+
+    </div>
+    <div class="flex items-center justify-between">
+      <button class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        {{ editMode ? 'Update':'Add' }}
+      </button>
+      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        Forgot Password?
+      </a>
+    </div>
+  </form>
+
+</div>
+</div>

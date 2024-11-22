@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ul li a{
+  @apply rounded py-[7px] px-[13px] text-[17px]
+  hover:text-rose-700 transition-all duration-300
+}

@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "e06c",
+      "fullname": "Tanawat",
+      "email": "nongmtanawat@gmail.com",
+      "password": "asd"
+    },
+    {
+      "id": "90ed",
+      "fullname": "test",
+      "email": "test@gmail.com",
+      "password": "test123"
+    },
+    {
+      "id": "fc11",
+      "fullname": "qqqqq",
+      "email": "q@gmail.com",
+      "password": "qqq"
+    }
+  ],
+  "product": [
+    {
+      "id": "00a4",
+      "pname": "Hololive",
+      "price": "5000"
+    },
+    {
+      "id": "2f15",
+      "pname": "Hero Academia",
+      "price": "1,000"
+    },
+    {
+      "id": "b54c",
+      "pname": "asd",
+      "price": "123"
+    }
+  ]
+}
